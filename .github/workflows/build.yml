@@ -45,15 +45,6 @@ jobs:
           sed -i 's/^requirements = .*/requirements = python3,kivy/' buildozer.spec
           sed -i 's/^orientation = .*/orientation = portrait/' buildozer.spec
 
-      - name: Install Android SDK tools
-        run: |
-          SDK="$HOME/.buildozer/android/platform/android-sdk"
-          mkdir -p "$SDK/licenses"
-          yes | "$SDK/cmdline-tools/latest/bin/sdkmanager" --licenses || true
-          "$SDK/cmdline-tools/latest/bin/sdkmanager" \
-            "platform-tools" \
-            "platforms;android-35" \
-            "build-tools;37.0.0"
 
       - name: Build APK
         run: |
